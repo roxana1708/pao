@@ -4,11 +4,11 @@ public abstract class User {
     String firstName;
     String secondName;
     String email;
-    String address;
+    Address address;
 
     public User() {System.out.println("User constructor from the abstract class"); }
 
-    public User(String firstName, String secondName, String email, String address) {
+    public User(String firstName, String secondName, String email, Address address) {
         this.firstName = firstName;
         this.secondName = secondName;
         this.email = email;
@@ -39,8 +39,8 @@ public abstract class User {
         this.email = email;
     }
 
-    public abstract String getAddress();
+    public abstract Address getAddress();
 
-    public abstract void setAddress(String address);
+    public abstract void setAddress(Address address);
 
 }

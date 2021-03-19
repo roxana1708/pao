@@ -2,24 +2,24 @@ package Classes;
 
 public class AffiliateCompany {
     String companyName;
-    String companyAddress;
+    Address companyAddress;
     Subscription companySubscription;
 
-    public AffiliateCompany(String companyName, String companyAddress, Subscription companySubscription) {
+    public AffiliateCompany(String companyName, Address companyAddress, String companySubscription) {
         this.companyName = companyName;
         this.companyAddress = companyAddress;
-        this.companySubscription = companySubscription;
+        this.companySubscription = new Subscription(companySubscription);
     }
 
     public String getCompanyName() {
         return companyName;
     }
 
-    public String getCompanyAddress() {
+    public Address getCompanyAddress() {
         return companyAddress;
     }
 
-    private void setCompanyAddress(String companyAddress) {
+    private void setCompanyAddress(Address companyAddress) {
         this.companyAddress = companyAddress;
     }
 
@@ -27,11 +27,11 @@ public class AffiliateCompany {
         return companySubscription;
     }
 
-    private void setCompanySubscription(Subscription companySubscription) {
-        this.companySubscription = companySubscription;
+    public void setCompanySubscription(String companySubscription) {
+        this.companySubscription.setSubscriptionType(companySubscription);
     }
 
-    public void changeCompanyAddress(String newAddress) {
+    public void changeCompanyAddress(Address newAddress) {
         setCompanyAddress(newAddress);
     }
 }

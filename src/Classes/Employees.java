@@ -3,11 +3,13 @@ package Classes;
 public class Employees extends User{
     AffiliateCompany company;
     String jobDescription;
+    //Subscription subscription;
 
-    public Employees(String firstName, String secondName, String email, String address, AffiliateCompany company, String jobDescription) {
+    public Employees(String firstName, String secondName, String email, Address address, AffiliateCompany company, String jobDescription) {
         super(firstName, secondName, email, address);
         this.company = company;
         this.jobDescription = jobDescription;
+        //this.subscription = company.getCompanySubscription();
     }
 
     public String getJobDescription() {
@@ -27,16 +29,20 @@ public class Employees extends User{
     }
 
     @Override
-    public String getAddress() {
+    public Address getAddress() {
         return company.getCompanyAddress();
     }
 
     @Override
-    public void setAddress(String address) {
+    public void setAddress(Address address) {
         if (this.jobDescription.toUpperCase() == "ADMIN") {
             this.company.changeCompanyAddress(address);
         } else {
             System.out.println("Only administrators can change the address of the company");
         }
+    }
+
+    public Subscription getSubscription() {
+        return this.company.getCompanySubscription();
     }
 }

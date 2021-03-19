@@ -9,7 +9,8 @@ public class Subscription {
     Date subscriptionExpirationDate;
     int maximumNoOfBooksPerPerson;
 
-    public Subscription() {
+    public Subscription(String subscriptionType) {
+        setSubscriptionType(subscriptionType);
     }
 
     public String getSubscriptionType() {
@@ -19,13 +20,14 @@ public class Subscription {
     public void setSubscriptionType(String subscriptionType) {
         Date currentDate = new Date();
         Calendar calendar = Calendar.getInstance();
-        switch (subscriptionType.toUpperCase(Locale.ROOT)) {
+        switch (subscriptionType.toUpperCase()) {
             case "BRONZ":
                 this.subscriptionType = subscriptionType;
                 this.maximumNoOfBooksPerPerson = 1;
                 calendar.setTime(currentDate);
                 calendar.add(Calendar.YEAR, 1);
                 this.subscriptionExpirationDate = calendar.getTime();
+                break;
 
             case "SILVER":
                 this.subscriptionType = subscriptionType;
@@ -33,6 +35,7 @@ public class Subscription {
                 calendar.setTime(currentDate);
                 calendar.add(Calendar.YEAR, 1);
                 this.subscriptionExpirationDate = calendar.getTime();
+                break;
 
             case "GOLD":
                 this.subscriptionType = subscriptionType;
@@ -40,6 +43,7 @@ public class Subscription {
                 calendar.setTime(currentDate);
                 calendar.add(Calendar.YEAR, 1);
                 this.subscriptionExpirationDate = calendar.getTime();
+                break;
 
             case "PLATINUM":
                 this.subscriptionType = subscriptionType;
@@ -47,8 +51,9 @@ public class Subscription {
                 calendar.setTime(currentDate);
                 calendar.add(Calendar.YEAR, 2);
                 this.subscriptionExpirationDate = calendar.getTime();
-        }
+                break;
 
+        }
     }
 
     public Date getSubscriptionExpirationDate() {

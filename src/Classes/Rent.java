@@ -9,11 +9,21 @@ public class Rent {
     Date dateOfReturn;
     int noDaysOfExtension;
 
-    public Rent(User user, BookTitle book, Date dateOfReturn, int noDaysOfExtension) {
+    public Rent(User user, BookTitle book, int noDaysOfExtension) {
         this.user = user;
         this.book = book;
-        this.dateOfReturn = dateOfReturn;
+
+        //this.dateOfReturn = dateOfReturn;
+        Calendar calendar = Calendar.getInstance();
+        Date currentDate = new Date();
+        calendar.setTime(currentDate);
+
+        calendar.add(Calendar.DAY_OF_MONTH, this.noDaysOfExtension);
+        this.dateOfReturn = calendar.getTime();
+        //
+
         this.noDaysOfExtension = noDaysOfExtension;
+        book.noOfCopiesAvailable--;
     }
 
     public User getUser() {
@@ -24,21 +34,21 @@ public class Rent {
         return book;
     }
 
-    public Date getDateOfReturn() {
-        return dateOfReturn;
-    }
+    //public Date getDateOfReturn() {
+        //return dateOfReturn;
+    //}
 
     public int getNoDaysOfExtension() {
         return noDaysOfExtension;
     }
 
-    private void setNoDaysOfExtension(int noDaysOfExtension) {
+    public void setNoDaysOfExtension(int noDaysOfExtension) {
         this.noDaysOfExtension = noDaysOfExtension;
     }
 
-    public Date checkReturnDate() {
+    public Date getDateOfReturn() {
         Calendar calendar = Calendar.getInstance();
-        calendar.setTime(getDateOfReturn());//this.dateOfReturn);
+        calendar.setTime(this.dateOfReturn);
 
         calendar.add(Calendar.DAY_OF_MONTH, this.noDaysOfExtension);
 
@@ -51,7 +61,7 @@ public class Rent {
         } else {
             setNoDaysOfExtension(noOfDays);
             System.out.println("Your request has been approved");
-            System.out.println("New date of return is " + checkReturnDate());
+            System.out.println("New date of return is " + getDateOfReturn());
         }
     }
 }

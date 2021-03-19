@@ -6,16 +6,17 @@ public class BookTitle {
     String title;
     String author;
     Date dateOfPublishing;
-    int ratingByReaders;
+    double ratingByReaders;
+    int noOfReadersRatings;
     String genre;
     int noOfCopies;
     int noOfCopiesAvailable;
 
-    public BookTitle(String title, String author, Date dateOfPublishing, int ratingByReaders, String genre, int noOfCopies) {
+    public BookTitle(String title, String author, Date dateOfPublishing, String genre, int noOfCopies) {
         this.title = title;
         this.author = author;
         this.dateOfPublishing = dateOfPublishing;
-        this.ratingByReaders = ratingByReaders;
+        this.ratingByReaders = 0;
         this.genre = genre;
         this.noOfCopies = noOfCopies;
         this.noOfCopiesAvailable = noOfCopies;
@@ -45,12 +46,20 @@ public class BookTitle {
         this.dateOfPublishing = dateOfPublishing;
     }
 
-    public int getRatingByReaders() {
+    public double getRatingByReaders() {
         return ratingByReaders;
     }
 
-    public void setRatingByReaders(int ratingByReaders) {
+    public void setRatingByReaders(double ratingByReaders) {
         this.ratingByReaders = ratingByReaders;
+    }
+
+    public int getNoOfReadersRatings() {
+        return noOfReadersRatings;
+    }
+
+    public void increaseNoOfReadersRatings() {
+        this.noOfReadersRatings++;
     }
 
     public String getGenre() {
