@@ -59,10 +59,20 @@ public class Tests {
         System.out.println(bookRental1.getDateOfReturn());
          */
 
-        BookTitle book1 = new BookTitle("a", "b", new Date(), "comedy", 10);
+        BookTitle book1 = new BookTitle("a", "b", new Date(), "comedy", 0);
+
+        /// test RateTitle
+        /*
         RateTitle.main(book1, 3);
         System.out.println(book1.getRatingByReaders());
         RateTitle.main(book1, 4);
         System.out.println(book1.getRatingByReaders());
+         */
+
+        /// test RentBook
+
+        RentBook.main(regularUser, book1);
+        System.out.println(book1.getNoOfCopiesAvailable());
+
     }
 }

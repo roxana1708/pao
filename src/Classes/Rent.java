@@ -9,7 +9,7 @@ public class Rent {
     Date dateOfReturn;
     int noDaysOfExtension;
 
-    public Rent(User user, BookTitle book, int noDaysOfExtension) {
+    public Rent(User user, BookTitle book) {
         this.user = user;
         this.book = book;
 
@@ -22,7 +22,7 @@ public class Rent {
         this.dateOfReturn = calendar.getTime();
         //
 
-        this.noDaysOfExtension = noDaysOfExtension;
+        this.noDaysOfExtension = 0;
         book.noOfCopiesAvailable--;
     }
 

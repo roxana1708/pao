@@ -77,4 +77,8 @@ public class BookTitle {
     public int getNoOfCopiesAvailable() {
         return noOfCopiesAvailable;
     }
+
+    public void increaseNoOfCopies() {
+        this.noOfCopiesAvailable++;
+    }
 }
