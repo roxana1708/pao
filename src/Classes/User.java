@@ -43,4 +43,21 @@ public abstract class User {
 
     public abstract void setAddress(Address address);
 
+    /*
+    @Override
+    public boolean equals(User user) {
+        if (user == this)
+            return true;
+
+        return this.getFirstName() == user.getFirstName()
+                && this.getSecondName() == user.getSecondName();
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        return hash;
+    }
+    */
+
 }

@@ -45,4 +45,22 @@ public class Employees extends User{
     public Subscription getSubscription() {
         return this.company.getCompanySubscription();
     }
+/*
+    @Override
+    public boolean equals(Employees e) {
+        if (e == this)
+            return true;
+
+        if (!(e instanceof Employees)) {
+            return false;
+        }
+
+        return this.getFirstName() == e.getFirstName()
+                && this.getSecondName() == e.getSecondName()
+                && this.getCompany() == e.getCompany()
+                && this.getJobDescription() == e.getJobDescription();
+
+    }
+
+ */
 }
