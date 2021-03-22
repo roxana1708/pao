@@ -2,7 +2,7 @@ package Classes;
 
 import java.util.Date;
 
-public class BookTitle {
+public class BookTitle implements Comparable<BookTitle>{
     String title;
     String author;
     Date dateOfPublishing;
@@ -63,7 +63,7 @@ public class BookTitle {
     }
 
     public String getGenre() {
-        return genre;
+        return this.genre;
     }
 
     public void setGenre(String genre) {
@@ -81,4 +81,10 @@ public class BookTitle {
     public void increaseNoOfCopies() {
         this.noOfCopiesAvailable++;
     }
+
+    @Override
+    public int compareTo(BookTitle bt) {
+        return Double.compare(getRatingByReaders(), bt.getRatingByReaders());
+    }
+
 }

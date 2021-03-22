@@ -1,7 +1,11 @@
 package Funtionalities;
 
-public class CancelSubscription {
-    public static void main(String[] args) {
+import Classes.*;
 
+import java.util.List;
+
+public class CancelSubscription {
+    public static void main(List<User> users, User user) {
+        users.remove(user);
     }
 }

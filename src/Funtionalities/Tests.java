@@ -2,8 +2,7 @@ package Funtionalities;
 
 import Classes.*;
 
-import java.util.Date;
-import java.util.Locale;
+import java.util.*;
 
 public class Tests {
     public static void main(String[] args) {
@@ -71,8 +70,59 @@ public class Tests {
 
         /// test RentBook
 
-        RentBook.main(regularUser, book1);
-        System.out.println(book1.getNoOfCopiesAvailable());
+        //RentBook.main(regularUser, book1);
+        //System.out.println(book1.getNoOfCopiesAvailable());
+
+        /// Search Book by ...
+
+        /*
+        BookTitle[] books = new BookTitle[4];
+        books[0] = new BookTitle("4321", "Paul Auster", new Date(), "fiction", 4);
+        books[1] = new BookTitle("Despre Destin", "Liiceanu & Plesu", new Date(), "philosophy", 2);
+        books[2] = new BookTitle("Cartea Iluziilor", "Paul Auster", new Date(), "fiction", 3);
+        books[3] = new BookTitle("The Castle", "Franz Kafka", new Date(), "classic", 8);
+
+        BookTitle[] byGenre = new BookTitle[books.length];
+
+        byGenre = SearchBookByGenre.main(books, "fiction");
+
+        System.out.println();
+        for (BookTitle book : byGenre) {
+            System.out.println(book.getTitle());
+        }
+
+        System.out.println();
+        System.out.println();
+        System.out.println();
+
+        RateTitle.main(books[0], 5);
+        RateTitle.main(books[1], 4);
+        RateTitle.main(books[2], 5);
+        RateTitle.main(books[3], 4);
+
+        SearchTopBooks.main(Arrays.asList(books));
+
+         */
+
+        /*
+        Regular regularUser2 = new Regular("Ana2", "Maria", "anamaria@yahoo.com", new Address("Brasov", "Sas", 100, "B54", 334), "bronz");
+        Regular regularUser3 = new Regular("Ana3", "Maria", "anamaria@yahoo.com", new Address("Brasov", "Sas", 100, "B54", 334), "bronz");
+
+        List<User> users = new ArrayList<User>();
+
+        users.add(regularUser);
+        users.add(regularUser2);
+        users.add(regularUser3);
+
+        CancelSubscription.main(users, regularUser2);
+
+        for (User user: users) {
+            System.out.println(user.getFirstName());
+        }
+        */
+
+        Regular regularUser2 = new Regular("Ana2", "Maria", "anamaria@yahoo.com", new Address("Brasov", "Sas", 100, "B54", 334), "bronz");
+        Regular regularUser3 = new Regular("Ana3", "Maria", "anamaria@yahoo.com", new Address("Brasov", "Sas", 100, "B54", 334), "bronz");
 
     }
 }
