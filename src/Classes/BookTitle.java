@@ -5,17 +5,17 @@ import java.util.Date;
 public class BookTitle implements Comparable<BookTitle>{
     String title;
     String author;
-    Date dateOfPublishing;
+    //Date dateOfPublishing;
     double ratingByReaders;
     int noOfReadersRatings;
     String genre;
     int noOfCopies;
     int noOfCopiesAvailable;
 
-    public BookTitle(String title, String author, Date dateOfPublishing, String genre, int noOfCopies) {
+    public BookTitle(String title, String author, /*Date dateOfPublishing,*/ String genre, int noOfCopies) {
         this.title = title;
         this.author = author;
-        this.dateOfPublishing = dateOfPublishing;
+        //this.dateOfPublishing = dateOfPublishing;
         this.ratingByReaders = 0;
         this.genre = genre;
         this.noOfCopies = noOfCopies;
@@ -37,7 +37,7 @@ public class BookTitle implements Comparable<BookTitle>{
     public void setAuthor(String author) {
         this.author = author;
     }
-
+/*
     public Date getDateOfPublishing() {
         return dateOfPublishing;
     }
@@ -45,6 +45,7 @@ public class BookTitle implements Comparable<BookTitle>{
     public void setDateOfPublishing(Date dateOfPublishing) {
         this.dateOfPublishing = dateOfPublishing;
     }
+*/
 
     public double getRatingByReaders() {
         return ratingByReaders;

@@ -5,8 +5,8 @@ public class Employees extends User{
     String jobDescription;
     //Subscription subscription;
 
-    public Employees(String firstName, String secondName, String email, Address address, AffiliateCompany company, String jobDescription) {
-        super(firstName, secondName, email, address);
+    public Employees(String firstName, String secondName, String email, /*Address address*/ AffiliateCompany company, String jobDescription) {
+        super(firstName, secondName, email, company.getCompanyAddress());
         this.company = company;
         this.jobDescription = jobDescription;
         //this.subscription = company.getCompanySubscription();

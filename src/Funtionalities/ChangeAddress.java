@@ -19,9 +19,17 @@ public class ChangeAddress {
         return false;
     }
 
-    public static void main(User user, Address newAddress) {
+    public static void changeForUser(User user, Address newAddress) {
         if (validAddress(newAddress)) {
             user.setAddress(newAddress);
+        } else {
+            System.out.println("The address is refering to a city where we don't provide our services.");
+        }
+    }
+
+    public static void changeForCompany(AffiliateCompany company, Address newAddress) {
+        if (validAddress(newAddress)) {
+            company.changeCompanyAddress(newAddress);
         } else {
             System.out.println("The address is refering to a city where we don't provide our services.");
         }

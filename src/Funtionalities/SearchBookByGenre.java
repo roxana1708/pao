@@ -2,8 +2,10 @@ package Funtionalities;
 
 import Classes.BookTitle;
 
+import java.util.List;
+
 public class SearchBookByGenre {
-    public static BookTitle[] main(BookTitle[] books, String genre) {
+    public static void main(List<BookTitle> books, String genre) {
         int no = 0;
         for (BookTitle book : books) {
             if (book.getGenre() == genre) {
@@ -23,6 +25,10 @@ public class SearchBookByGenre {
                 i++;
             }
         }
-        return searchByGenre;
+
+        for (BookTitle book : searchByGenre) {
+            System.out.println(book.getTitle());
+        }
+        //return searchByGenre;
     }
 }

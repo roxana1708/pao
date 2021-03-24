@@ -125,13 +125,13 @@ public class Tests {
         Regular regularUser2 = new Regular("Ana2", "Maria", "anamaria@yahoo.com", new Address("Brasov", "Sas", 100, "B54", 334), "bronz");
         Regular regularUser3 = new Regular("Ana3", "Maria", "anamaria@yahoo.com", new Address("Brasov", "Sas", 100, "B54", 334), "bronz");
 
-
+/*
         List<AffiliateCompany> companies = new ArrayList<AffiliateCompany>();
         AffiliateCompany comp1 = new AffiliateCompany("digi", new Address("Bucuresti", "Staicovici", 75, "Forum2000", 1), "platinum");
         AffiliateCompany comp2 = new AffiliateCompany("gts", new Address("Bucuresti", "Staicovici", 105, "B2", 1), "gold");
-        Employees empl1 = new Employees("ro", "ghe", "roki@trp.com", new Address("Bucuresti", "Staicovici", 45-49, "Forum2000", 1), comp1, "ceo");
-        Employees empl2 = new Employees("ca", "ghe", "ca@trp.com", new Address("Bucuresti", "Staicovici", 45-49, "Forum2000", 1), comp1, "cfo");
-        Employees empl3 = new Employees("c", "h", "ch@trp.com", new Address("Bucuresti", "Staicovici", 45-49, "Forum2000", 1), comp2, "ceo");
+        //Employees empl1 = new Employees("ro", "ghe", "roki@trp.com", new Address("Bucuresti", "Staicovici", 45-49, "Forum2000", 1), comp1, "ceo");
+        //Employees empl2 = new Employees("ca", "ghe", "ca@trp.com", new Address("Bucuresti", "Staicovici", 45-49, "Forum2000", 1), comp1, "cfo");
+        //Employees empl3 = new Employees("c", "h", "ch@trp.com", new Address("Bucuresti", "Staicovici", 45-49, "Forum2000", 1), comp2, "ceo");
 
         comp1.addEmployee(empl1);
         comp1.addEmployee(empl2);
@@ -154,5 +154,7 @@ public class Tests {
         rentals.add(rent3);
 
         ListEmployeesReadings.main(comp1, rentals);
+
+ */
     }
 }
