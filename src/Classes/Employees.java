@@ -42,6 +42,7 @@ public class Employees extends User{
         }
     }
 
+    @Override
     public Subscription getSubscription() {
         return this.company.getCompanySubscription();
     }

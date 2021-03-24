@@ -19,9 +19,10 @@ public class Main {
 
         switch (optionChoice) {
             case 1:
+                // NEW USER
                 String typeOfUser = keyboard.next();
-                if (typeOfUser == "Regular") {
-                    Services.listRegular();
+                if (typeOfUser.equals("Regular")) {
+                    Services.listRegularMessage();
                     String firstName = keyboard.next();
                     String secondName = keyboard.next();
                     String email = keyboard.next();
@@ -35,10 +36,16 @@ public class Main {
                     int apartmentNo = keyboard.nextInt();
 
                     //create new account
-                    users.add(new Regular(firstName, secondName, email, new Address(city, street, streetNo, building, apartmentNo), subscription));
+                    Address address = new Address(city, street, streetNo, building, apartmentNo);
 
-                } else if (typeOfUser == "Employee") {
-                    Services.listEmployee();
+                    if (ChangeAddress.validAddress(address)) {
+                        users.add(new Regular(firstName, secondName, email, address, subscription));
+                    } else {
+                        System.out.println("Invalid Address");
+                    }
+
+                } else if (typeOfUser.equals("Employee")) {
+                    Services.listEmployeeMessage();
                     String firstName = keyboard.next();
                     String secondName = keyboard.next();
                     String email = keyboard.next();
@@ -50,7 +57,7 @@ public class Main {
                     //AffiliateCompany affComp;
                     int ok = 0;
                     for (AffiliateCompany company : companies) {
-                        if (company.getCompanyName() == companyName) {
+                        if (company.getCompanyName().equals(companyName)) {
                             //affComp = company;
                             ok = 1;
                             Employees e = new Employees(firstName, secondName, email, company, jobDescription);
@@ -70,7 +77,8 @@ public class Main {
                 break;
 
             case 2:
-                Services.listAffComp();
+                // NEW AFFILIATE COMPANY
+                Services.listAffCompMessage();
                 String companyName = keyboard.next();
                 String subscriptionType = keyboard.next();
 
@@ -80,34 +88,41 @@ public class Main {
                 String building = keyboard.next();
                 int apartmentNo = keyboard.nextInt();
 
-                companies.add(new AffiliateCompany(companyName, new Address(city, street, streetNo, building, apartmentNo), subscriptionType));
+                Address address = new Address(city, street, streetNo, building, apartmentNo);
+
+                if (ChangeAddress.validAddress(address)) {
+                    companies.add(new AffiliateCompany(companyName, address, subscriptionType));
+                } else {
+                    System.out.println("Invalid address");
+                }
                 break;
 
             case 3:
-                System.out.println("Regular User (1) of Affiliate Company(2)?");
+                // CHANGE SUBSCRIPTION
+                Services.chooseUserTypeMessage();
                 int userType = keyboard.nextInt();
 
                 if (userType == 1) {
-                    System.out.println("Type First Name, Second Name and Name of the New Subscription Type");
+                    Services.changeSubscriptionForUserMessage();
                     String firstName = keyboard.next();
                     String secondName = keyboard.next();
                     String newSubscription = keyboard.next();
 
                     //validation of new subscription is made in the Subscription Class
                     for (User regUser: users) {
-                        if (regUser.getFirstName() == firstName && regUser.getSecondName() == secondName) {
+                        if (regUser.getFirstName().equals(firstName) && regUser.getSecondName().equals(secondName)) {
                             ChangeSubscription.main((Regular) regUser, newSubscription);
                             break;
                         }
                     }
 
                 } else if (userType == 2) {
-                    System.out.println("Type Company Name and Name of the New Subscription Type");
+                    Services.changeSubscriptionForCompanyMessage();
                     String compName = keyboard.next();
                     String newSubscription = keyboard.next();
 
                     for (AffiliateCompany company : companies) {
-                        if (company.getCompanyName() == compName) {
+                        if (company.getCompanyName().equals(compName)) {
                             ChangeSubscriptionForCompany.main(company, newSubscription);
                         }
                     }
@@ -117,11 +132,12 @@ public class Main {
                 break;
 
             case 4:
-                System.out.println("Regular User (1) of Affiliate Company(2)?");
+                //CHANGE ADDRESS
+                Services.chooseUserTypeMessage();
                 int user = keyboard.nextInt();
 
                 if (user == 1) {
-                    System.out.println("Type First Name, Second Name and Name of the New Subscription Type");
+                    Services.changeAddressForUserMessage();
                     String firstName = keyboard.next();
                     String secondName = keyboard.next();
 
@@ -132,17 +148,17 @@ public class Main {
                     String building_ = keyboard.next();
                     int apartmentNo_ = keyboard.nextInt();
 
-                    Address address = new Address(city_, street_, streetNo_, building_, apartmentNo_);
+                    Address address_ = new Address(city_, street_, streetNo_, building_, apartmentNo_);
 
                     for (User regUser: users) {
-                        if (regUser.getFirstName() == firstName && regUser.getSecondName() == secondName) {
-                            ChangeAddress.changeForUser((Regular) regUser, address);
+                        if (regUser.getFirstName().equals(firstName) && regUser.getSecondName().equals(secondName)) {
+                            ChangeAddress.changeForUser((Regular) regUser, address_);
                             break;
                         }
                     }
 
                 } else if (user == 2) {
-                    System.out.println("Type Company Name and Name of the New Subscription Type");
+                    Services.changeAddressForCompanyMessage();
                     String compName = keyboard.next();
 
                     String city_ = keyboard.next();
@@ -151,11 +167,11 @@ public class Main {
                     String building_ = keyboard.next();
                     int apartmentNo_ = keyboard.nextInt();
 
-                    Address address = new Address(city_, street_, streetNo_, building_, apartmentNo_);
+                    Address address_ = new Address(city_, street_, streetNo_, building_, apartmentNo_);
 
                     for (AffiliateCompany company : companies) {
-                        if (company.getCompanyName() == compName) {
-                            ChangeAddress.changeForCompany(company, address);
+                        if (company.getCompanyName().equals(compName)) {
+                            ChangeAddress.changeForCompany(company, address_);
                         }
                     }
 
@@ -166,15 +182,16 @@ public class Main {
                 break;
 
             case 5:
-                System.out.println("Type First Name, Second Name and Name of the New Subscription Type");
+                // RENT BOOK
+                Services.rentBookMessage();
                 String firstName = keyboard.next();
                 String secondName = keyboard.next();
                 String bookTitle = keyboard.next();
 
                 for (User regUser: users) {
-                    if (regUser.getFirstName() == firstName && regUser.getSecondName() == secondName) {
+                    if (regUser.getFirstName().equals(firstName) && regUser.getSecondName().equals(secondName)) {
                         for (BookTitle book : books) {
-                            if (book.getTitle() == bookTitle) {
+                            if (book.getTitle().equals(bookTitle)) {
                                 RentBook.main(regUser, book, rentals);
                                 break;
                             }
@@ -185,15 +202,16 @@ public class Main {
                 break;
 
             case 6:
-                System.out.println("Type First Name, Second Name and Name of the New Subscription Type");
+                // RETURN BOOK
+                Services.returnBookMessage();
                 String firstName_ = keyboard.next();
                 String secondName_ = keyboard.next();
                 String bookTitle_ = keyboard.next();
 
                 for (User regUser: users) {
-                    if (regUser.getFirstName() == firstName_ && regUser.getSecondName() == secondName_) {
+                    if (regUser.getFirstName().equals(firstName_) && regUser.getSecondName().equals(secondName_)) {
                         for (BookTitle book : books) {
-                            if (book.getTitle() == bookTitle_) {
+                            if (book.getTitle().equals(bookTitle_)) {
                                 ReturnBook.main(regUser, book, rentals);
                                 break;
                             }
@@ -204,14 +222,15 @@ public class Main {
                 break;
 
             case 7:
-                System.out.println("Type First Name, Second Name and Name of the New Subscription Type");
+                // CHECK RETURN DATE
+                Services.checkReturnDateMessage();
                 String firstName__ = keyboard.next();
                 String secondName__ = keyboard.next();
                 String bookTitle__ = keyboard.next();
 
                 for (Rent rental : rentals) {
-                    if (rental.getUser().getFirstName() == firstName__ && rental.getUser().getSecondName() == secondName__) {
-                        if (rental.getBook().getTitle() == bookTitle__) {
+                    if (rental.getUser().getFirstName().equals(firstName__) && rental.getUser().getSecondName().equals(secondName__)) {
+                        if (rental.getBook().getTitle().equals(bookTitle__)) {
                             CheckReturnDate.main(rental);
                         }
                     }
@@ -219,15 +238,16 @@ public class Main {
                 break;
 
             case 8:
-                System.out.println("Type First Name, Second Name and Name of the New Subscription Type");
+                // EXTEND RETURN DATE
+                Services.extendReturnDateMessage();
                 String firstName___ = keyboard.next();
                 String secondName___ = keyboard.next();
                 String bookTitle___ = keyboard.next();
                 int noOfExtensionDays = keyboard.nextInt();
 
                 for (Rent rental : rentals) {
-                    if (rental.getUser().getFirstName() == firstName___ && rental.getUser().getSecondName() == secondName___) {
-                        if (rental.getBook().getTitle() == bookTitle___) {
+                    if (rental.getUser().getFirstName().equals(firstName___) && rental.getUser().getSecondName().equals(secondName___)) {
+                        if (rental.getBook().getTitle().equals(bookTitle___)) {
                             ExtendReturnDate.main(rental, noOfExtensionDays);
                         }
                     }
@@ -235,45 +255,58 @@ public class Main {
                 break;
 
             case 9:
+                // SEARCH BOOK BY GENRE
+                Services.searchBookByGenreMessage();
                 String genre = keyboard.next();
                 SearchBookByGenre.main(books, genre);
                 break;
 
             case 10:
+                // SEARCH TOP BOOKS
                 SearchTopBooks.main(books);
                 break;
 
             case 11:
+                // RATE TITLE
+                Services.rateTitleMessage();
                 String bookT = keyboard.next();
                 int rating = keyboard.nextInt();
 
-                for (BookTitle book: books) {
-                    if (book.getTitle() == bookT) {
-                        RateTitle.main(book, rating);
+                if (rating < 1 || rating > 5) {
+                    System.out.println("Invalid rating");
+                } else {
+                    for (BookTitle book : books) {
+                        if (book.getTitle().equals(bookT)) {
+                            RateTitle.main(book, rating);
+                        }
                     }
                 }
                 break;
 
             case 12:
+                // GET TOP READING COMPANIES
                 GetTopReadingCompanies.main(companies);
                 break;
 
             case 13:
+                // LIST EMPLOYEES READINGS
+                Services.listEmployeesReadingsMessage();
                 String company = keyboard.next();
                 for (AffiliateCompany comp : companies) {
-                    if (comp.getCompanyName() == company) {
+                    if (comp.getCompanyName().equals(company)) {
                         ListEmployeesReadings.main(comp, rentals);
                     }
                 }
                 break;
 
             case 14:
-                System.out.println("Type First Name, Second Name and Name of the New Subscription Type");
+                // CANCEL SUBSCRIPTIONS
+                Services.cancelSubscriptionMessage();
                 String firstName____ = keyboard.next();
                 String secondName____ = keyboard.next();
 
                 for (User regUser: users) {
-                    if (regUser.getFirstName() == firstName____ && regUser.getSecondName() == secondName____) {
+                    if (regUser.getFirstName().equals(firstName____) && regUser.getSecondName().equals(secondName____)) {
                         CancelSubscription.main(users, regUser);
                     }
                 }

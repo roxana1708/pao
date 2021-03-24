@@ -9,6 +9,6 @@ import java.util.List;
 public class ReturnBook {
     public static void main(User user, BookTitle book, List<Rent> rentals) {
         book.increaseNoOfCopies();
-        //delete rent instance for this book rental
+        rentals.removeIf(rental -> rental.getBook() == book && rental.getUser() == user);
     }
 }

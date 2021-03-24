@@ -5,6 +5,7 @@ public abstract class User {
     String secondName;
     String email;
     Address address;
+    //Subscription subscription;
 
     public User() {System.out.println("User constructor from the abstract class"); }
 
@@ -43,6 +44,8 @@ public abstract class User {
 
     public abstract void setAddress(Address address);
 
+    public abstract Subscription getSubscription();
+    //public abstract void setSubscription();
     /*
     @Override
     public boolean equals(User user) {

@@ -19,6 +19,7 @@ public class Regular extends User{
         this.address = address;
     }
 
+    @Override
     public Subscription getSubscription() {
         return subscription;
     }
