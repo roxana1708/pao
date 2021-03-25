@@ -46,7 +46,7 @@ public class Services {
     }
 
     public static void chooseUserTypeMessage() {
-        System.out.println("Regular User (1) of Affiliate Company(2)?");
+        System.out.println("Regular User (1) or Employee(2)?");
     }
 
     public static void changeSubscriptionForUserMessage() {

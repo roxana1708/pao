@@ -11,7 +11,7 @@ public class ChangeAddress {
         String[] acceptedCities = {"Bucuresti", "Brasov", "Sibiu", "Cluj"};
 
         for (String city : acceptedCities) {
-            if (city == address.getCity()) {
+            if (city.equals(address.getCity().strip())) {
                 return true;
             }
         }

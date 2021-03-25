@@ -20,8 +20,9 @@ public class Main {
         switch (optionChoice) {
             case 1:
                 // NEW USER
-                String typeOfUser = keyboard.next();
-                if (typeOfUser.equals("Regular")) {
+                Services.chooseUserTypeMessage();
+                int typeOfUser = keyboard.nextInt();
+                if (typeOfUser == 1) {
                     Services.listRegularMessage();
                     String firstName = keyboard.next();
                     String secondName = keyboard.next();
@@ -38,13 +39,23 @@ public class Main {
                     //create new account
                     Address address = new Address(city, street, streetNo, building, apartmentNo);
 
+                    //System.out.print(address.getCity());
+                    //System.out.print("aa");
                     if (ChangeAddress.validAddress(address)) {
                         users.add(new Regular(firstName, secondName, email, address, subscription));
                     } else {
                         System.out.println("Invalid Address");
                     }
 
-                } else if (typeOfUser.equals("Employee")) {
+                    /*
+                    for (User user: users) {
+                        System.out.println(user.getFirstName());
+                        System.out.println(user.getSecondName());
+                        System.out.println(user.getAddress().getStreet());
+                    }
+                    */
+
+                } else if (typeOfUser == 2) {
                     Services.listEmployeeMessage();
                     String firstName = keyboard.next();
                     String secondName = keyboard.next();

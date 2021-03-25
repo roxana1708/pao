@@ -58,8 +58,8 @@ public class Tests {
         System.out.println(bookRental1.getDateOfReturn());
          */
 
-        BookTitle book1 = new BookTitle("a", "b", new Date(), "comedy", 0);
-        BookTitle book2 = new BookTitle("b", "b", new Date(), "comedy", 0);
+        //BookTitle book1 = new BookTitle("a", "b", new Date(), "comedy", 0);
+        //BookTitle book2 = new BookTitle("b", "b", new Date(), "comedy", 0);
 
         /// test RateTitle
         /*
