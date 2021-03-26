@@ -48,6 +48,7 @@ public class Services {
     public static void chooseUserTypeMessage() {
         System.out.println("Regular User (1) or Employee(2)?");
     }
+    public static void chooseUserOrCompany() {System.out.println("Regular User (1) or Company(2)?");}
 
     public static void changeSubscriptionForUserMessage() {
         System.out.println("Type your first name, second name and the name of the new subscription type you've chosen");

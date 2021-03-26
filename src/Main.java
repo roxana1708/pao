@@ -11,6 +11,8 @@ public class Main {
         List<AffiliateCompany> companies = new ArrayList<AffiliateCompany>();
         List<BookTitle> books = new ArrayList<BookTitle>();
 
+        AddCompanies.main(companies);
+
         Services.main();
 
         Scanner keyboard = new Scanner(System.in);
@@ -94,7 +96,7 @@ public class Main {
                 String subscriptionType = keyboard.next();
 
                 String city = keyboard.next();
-                String street = keyboard.next();
+                String street = keyboard.nextLine();
                 int streetNo = keyboard.nextInt();
                 String building = keyboard.next();
                 int apartmentNo = keyboard.nextInt();
@@ -106,11 +108,17 @@ public class Main {
                 } else {
                     System.out.println("Invalid address");
                 }
+
+                /*
+                for (AffiliateCompany company : companies) {
+                    System.out.println(company.getCompanyName());
+                }
+                 */
                 break;
 
             case 3:
                 // CHANGE SUBSCRIPTION
-                Services.chooseUserTypeMessage();
+                Services.chooseUserOrCompany();
                 int userType = keyboard.nextInt();
 
                 if (userType == 1) {
@@ -137,9 +145,17 @@ public class Main {
                             ChangeSubscriptionForCompany.main(company, newSubscription);
                         }
                     }
+/*
+                    for (AffiliateCompany company : companies) {
+                        System.out.println(company.getCompanySubscription().getSubscriptionType());
+                    }
+
+ */
                 } else {
                     System.out.println("Invalid choice");
                 }
+
+
                 break;
 
             case 4:
@@ -199,16 +215,27 @@ public class Main {
                 String secondName = keyboard.next();
                 String bookTitle = keyboard.next();
 
+                int ok1 = 0, ok2 = 0;
                 for (User regUser: users) {
                     if (regUser.getFirstName().equals(firstName) && regUser.getSecondName().equals(secondName)) {
+                        ok1 = 1;
                         for (BookTitle book : books) {
                             if (book.getTitle().equals(bookTitle)) {
+                                ok2 = 1;
                                 RentBook.main(regUser, book, rentals);
                                 break;
                             }
                         }
                         break;
                     }
+                }
+
+                if (ok1 == 0) {
+                    System.out.println("There's no user with this name.");
+                }
+
+                if (ok2 == 0) {
+                    System.out.println("We don't have this book");
                 }
                 break;
 
@@ -219,10 +246,14 @@ public class Main {
                 String secondName_ = keyboard.next();
                 String bookTitle_ = keyboard.next();
 
+                int ok1_ = 0, ok2_ = 0;
+
                 for (User regUser: users) {
                     if (regUser.getFirstName().equals(firstName_) && regUser.getSecondName().equals(secondName_)) {
+                        ok1_ = 1;
                         for (BookTitle book : books) {
                             if (book.getTitle().equals(bookTitle_)) {
+                                ok2_ = 1;
                                 ReturnBook.main(regUser, book, rentals);
                                 break;
                             }
@@ -230,6 +261,15 @@ public class Main {
                         break;
                     }
                 }
+
+                if (ok1_ == 0) {
+                    System.out.println("There's no user with this name.");
+                }
+
+                if (ok2_ == 0) {
+                    System.out.println("We don't have this book");
+                }
+
                 break;
 
             case 7:
@@ -239,12 +279,24 @@ public class Main {
                 String secondName__ = keyboard.next();
                 String bookTitle__ = keyboard.next();
 
+                int ok1__ = 0, ok2__ = 0;
+
                 for (Rent rental : rentals) {
                     if (rental.getUser().getFirstName().equals(firstName__) && rental.getUser().getSecondName().equals(secondName__)) {
+                        ok1__ = 1;
                         if (rental.getBook().getTitle().equals(bookTitle__)) {
+                            ok2__ = 1;
                             CheckReturnDate.main(rental);
                         }
                     }
+                }
+
+                if (ok1__ == 0) {
+                    System.out.println("There's no user with this name.");
+                }
+
+                if (ok2__ == 0) {
+                    System.out.println("We don't have this book");
                 }
                 break;
 
@@ -256,13 +308,25 @@ public class Main {
                 String bookTitle___ = keyboard.next();
                 int noOfExtensionDays = keyboard.nextInt();
 
+                int ok1___ = 0, ok2___ = 0;
                 for (Rent rental : rentals) {
                     if (rental.getUser().getFirstName().equals(firstName___) && rental.getUser().getSecondName().equals(secondName___)) {
+                        ok1___ = 1;
                         if (rental.getBook().getTitle().equals(bookTitle___)) {
+                            ok2___ = 1;
                             ExtendReturnDate.main(rental, noOfExtensionDays);
                         }
                     }
                 }
+
+                if (ok1___ == 0) {
+                    System.out.println("There's no user with this name.");
+                }
+
+                if (ok2___ == 0) {
+                    System.out.println("We don't have this book");
+                }
+
                 break;
 
             case 9:
@@ -283,14 +347,21 @@ public class Main {
                 String bookT = keyboard.next();
                 int rating = keyboard.nextInt();
 
+                int ok = 0;
+
                 if (rating < 1 || rating > 5) {
                     System.out.println("Invalid rating");
                 } else {
                     for (BookTitle book : books) {
                         if (book.getTitle().equals(bookT)) {
+                            ok = 1;
                             RateTitle.main(book, rating);
                         }
                     }
+                }
+
+                if (ok == 0) {
+                    System.out.println("We don't have this book");
                 }
                 break;
 
@@ -316,10 +387,17 @@ public class Main {
                 String firstName____ = keyboard.next();
                 String secondName____ = keyboard.next();
 
+                int ok_ = 0;
                 for (User regUser: users) {
                     if (regUser.getFirstName().equals(firstName____) && regUser.getSecondName().equals(secondName____)) {
+                        ok = 1;
                         CancelSubscription.main(users, regUser);
+                        break;
                     }
+                }
+
+                if (ok_ == 0) {
+                    System.out.println("There's no user with this name in our system");
                 }
                 break;
 
