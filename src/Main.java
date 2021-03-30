@@ -12,6 +12,7 @@ public class Main {
         List<BookTitle> books = new ArrayList<BookTitle>();
 
         AddCompanies.main(companies);
+        AddBooks.main(books);
 
         Services.main();
 
