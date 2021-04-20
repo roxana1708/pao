@@ -1,18 +1,20 @@
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import Classes.*;
 import Funtionalities.*;
+import com.opencsv.exceptions.CsvException;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, CsvException {
         List<Rent> rentals = new ArrayList<Rent>();
         List<User> users = new ArrayList<User>();
         List<AffiliateCompany> companies = new ArrayList<AffiliateCompany>();
-        List<BookTitle> books = new ArrayList<BookTitle>();
+        List<BookTitle> books = AddBooksSingleton.getInstance().books;
 
         AddCompanies.main(companies);
-        AddBooks.main(books);
+        //AddBooks.main(books);
 
         Services.main();
 

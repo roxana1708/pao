@@ -1,21 +1,32 @@
 package Classes;
 
-import java.util.Date;
+import com.opencsv.*;
+import com.opencsv.bean.CsvBindByPosition;
 
 public class BookTitle implements Comparable<BookTitle>{
+
+    //@CsvBindByPosition(position = 0)
     String title;
+
+    //@CsvBindByPosition(position = 1)
     String author;
-    //Date dateOfPublishing;
-    double ratingByReaders;
-    int noOfReadersRatings;
+
+    //@CsvBindByPosition(position = 2)
     String genre;
+
+    //@CsvBindByPosition(position = 3)
     int noOfCopies;
+
+    //@CsvBindByPosition(position = 4)
     int noOfCopiesAvailable;
 
-    public BookTitle(String title, String author, /*Date dateOfPublishing,*/ String genre, int noOfCopies) {
+    double ratingByReaders;
+    int noOfReadersRatings;
+
+
+    public BookTitle(String title, String author, String genre, int noOfCopies) {
         this.title = title;
         this.author = author;
-        //this.dateOfPublishing = dateOfPublishing;
         this.ratingByReaders = 0;
         this.genre = genre;
         this.noOfCopies = noOfCopies;
@@ -37,15 +48,6 @@ public class BookTitle implements Comparable<BookTitle>{
     public void setAuthor(String author) {
         this.author = author;
     }
-/*
-    public Date getDateOfPublishing() {
-        return dateOfPublishing;
-    }
-
-    public void setDateOfPublishing(Date dateOfPublishing) {
-        this.dateOfPublishing = dateOfPublishing;
-    }
-*/
 
     public double getRatingByReaders() {
         return ratingByReaders;
