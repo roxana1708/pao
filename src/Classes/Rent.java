@@ -4,18 +4,33 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class Rent {
-    User user;
-    BookTitle book;
-    Date dateOfReturn;
-    int noDaysOfExtension;
+    private User user;
+    private BookTitle book;
+    private Date dateOfReturn;
+    private int noDaysOfExtension;
 
     public Rent(User user, BookTitle book) {
         this.user = user;
         this.book = book;
 
-        //this.dateOfReturn = dateOfReturn;
         Calendar calendar = Calendar.getInstance();
         Date currentDate = new Date();
+        calendar.setTime(currentDate);
+
+        calendar.add(Calendar.DAY_OF_MONTH, this.noDaysOfExtension);
+        this.dateOfReturn = calendar.getTime();
+        //
+
+        this.noDaysOfExtension = 0;
+        book.noOfCopiesAvailable--;
+    }
+
+    public Rent(User user, BookTitle book, Date date) {
+        this.user = user;
+        this.book = book;
+
+        Calendar calendar = Calendar.getInstance();
+        Date currentDate = date;
         calendar.setTime(currentDate);
 
         calendar.add(Calendar.DAY_OF_MONTH, this.noDaysOfExtension);
@@ -33,10 +48,6 @@ public class Rent {
     public BookTitle getBook() {
         return book;
     }
-
-    //public Date getDateOfReturn() {
-        //return dateOfReturn;
-    //}
 
     public int getNoDaysOfExtension() {
         return noDaysOfExtension;

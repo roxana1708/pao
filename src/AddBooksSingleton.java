@@ -24,7 +24,7 @@ public class AddBooksSingleton {
         List<String[]> allData = csvReader.readAll();
 
         for (String[] row : allData) {
-            books.add(new BookTitle(row[0], row[1], row[2],Integer.parseInt(row[3])));
+            books.add(new BookTitle(row[0], row[1], row[2], Integer.parseInt(row[3])));
         }
     }
 
@@ -34,44 +34,5 @@ public class AddBooksSingleton {
         }
 
         return INSTANCE;
-    }
-
-
-    public static List<BookTitle> main() throws IOException, CsvException {
- /*       //try {
-        String fileName = "/Users/roxana/IdeaProjects/Proiect/src/books.csv";
-
-        List<BookTitle> books = new CsvToBeanBuilder(new FileReader(fileName)).withType(BookTitle.class).build().parse();
-
-        for (BookTitle book : books) {
-
-            System.out.println(book.getTitle());
-            System.out.println(book.getAuthor());
-            System.out.println(book.getGenre());
-            System.out.println(book.getNoOfCopies());
-            System.out.println(book.getNoOfCopiesAvailable());
-        }
-    }
-
-  */
-        List<BookTitle> books = new ArrayList<BookTitle>();
-        FileReader fileName = new FileReader("/Users/roxana/IdeaProjects/Proiect/src/books.csv");
-
-        CSVReader csvReader = new CSVReaderBuilder(fileName).build();
-
-        List<String[]> allData = csvReader.readAll();
-
-        for (String[] row : allData) {
-            books.add(new BookTitle(row[0], row[1], row[2],Integer.parseInt(row[3])));
-            System.out.print(row[0] + " " + row[1] + " " + row[2] + " " + row[3]);
-            System.out.println();
-        }
-
-
-        //}
-        //catch (Exception e) {
-        //    e.printStackTrace();
-        //}
-        return books;
     }
 }
